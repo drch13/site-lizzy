@@ -85,7 +85,7 @@ function setupProductCards() {
 function setupFormValidation() {
     const contactForm = document.getElementById('formulaire-contact');
     // Remplacez cette URL par votre ID Formspree réel (ex: https://formspree.io/f/mleznjgo)
-    const formspreeUrl = 'https://formspree.io/f/VORE_IDE_DE_FORMULAIRE';
+    const formspreeUrl = 'https://formspree.io/f/mpqgrovr';
     
     if (contactForm) {
         contactForm.addEventListener('submit', async function(e) {
