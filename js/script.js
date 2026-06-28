@@ -80,32 +80,32 @@ function setupProductCards() {
 }
 
 /**
- * Validation du formulaire de contact
+ * Validation et soumission du formulaire de contact
  */
 function setupFormValidation() {
     const contactForm = document.getElementById('formulaire-contact');
+    // Remplacez cette URL par votre ID Formspree réel (ex: https://formspree.io/f/mleznjgo)
+    const formspreeUrl = 'https://formspree.io/f/VORE_IDE_DE_FORMULAIRE';
     
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault(); // Empêcher la soumission classique
+
             // Récupérer les champs
             const nom = document.getElementById('nom');
             const email = document.getElementById('email');
             const sujet = document.getElementById('sujet');
             const message = document.getElementById('message');
-            
+
             // Réinitialiser les erreurs
             clearErrors();
-            
+
             // Valider les champs
             let isValid = true;
-            
             if (!nom.value.trim()) {
                 showError(nom, 'Veuillez entrer votre nom');
                 isValid = false;
             }
-            
             if (!email.value.trim()) {
                 showError(email, 'Veuillez entrer votre email');
                 isValid = false;
@@ -113,57 +113,118 @@ function setupFormValidation() {
                 showError(email, 'Veuillez entrer un email valide');
                 isValid = false;
             }
-            
             if (!sujet.value.trim()) {
                 showError(sujet, 'Veuillez entrer un sujet');
                 isValid = false;
             }
-            
             if (!message.value.trim()) {
                 showError(message, 'Veuillez entrer votre message');
                 isValid = false;
             }
-            
-            // Si tout est valide, soumettre le formulaire
-            if (isValid) {
-                // Simulation d'envoi (à remplacer par un vrai envoi en production)
-                alert('Merci pour votre message ! Je vous répondrai dès que possible.');
-                contactForm.reset();
-                
-                // En production, vous pourriez utiliser :
-                // contactForm.submit();
+
+            if (!isValid) return; // Arrêter si invalide
+
+            // Désactiver le bouton et afficher un message de chargement
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            submitButton.textContent = 'Envoi en cours...';
+            submitButton.disabled = true;
+
+            try {
+                // Envoyer les données à Formspree via Fetch API
+                const response = await fetch(formspreeUrl, {
+                    method: 'POST',
+                    body: new FormData(contactForm),
+                    headers: {
+                        'Accept': 'application/json',
+                    },
+                });
+
+                if (response.ok) {
+                    // Succès : afficher un message et réinitialiser le formulaire
+                    showSuccessMessage('Merci pour votre message ! Je vous répondrai dès que possible.');
+                    contactForm.reset();
+                } else {
+                    // Erreur Formspree (ex: limite de soumissions)
+                    throw new Error('Échec de l\'envoi. Veuillez réessayer plus tard.');
+                }
+            } catch (error) {
+                // Afficher un message d'erreur
+                showErrorMessage('Une erreur est survenue : ' + error.message);
+            } finally {
+                // Réactiver le bouton dans tous les cas
+                submitButton.textContent = 'Envoyer le message';
+                submitButton.disabled = false;
             }
         });
     }
 }
 
 /**
- * Afficher une erreur pour un champ
+ * Afficher une erreur pour un champ spécifique
  */
 function showError(input, message) {
     const formGroup = input.closest('.groupe-formulaire');
+    // Supprimer d'éventuelles erreurs existantes pour ce champ
+    const existingError = formGroup.querySelector('.error-message');
+    if (existingError) existingError.remove();
+
     const errorElement = document.createElement('p');
     errorElement.className = 'error-message';
     errorElement.textContent = message;
-    errorElement.style.color = '#ff0000';
+    errorElement.style.color = '#dc3545';
     errorElement.style.fontSize = '0.9rem';
     errorElement.style.marginTop = '5px';
     formGroup.appendChild(errorElement);
-    
-    input.style.borderColor = '#ff0000';
+
+    input.style.borderColor = '#dc3545';
 }
 
 /**
- * Effacer toutes les erreurs
+ * Effacer toutes les erreurs de champ
  */
 function clearErrors() {
-    const errorMessages = document.querySelectorAll('.error-message');
+    const errorMessages = document.querySelectorAll('.groupe-formulaire .error-message');
     errorMessages.forEach(msg => msg.remove());
-    
+
     const inputs = document.querySelectorAll('.groupe-formulaire input, .groupe-formulaire textarea');
     inputs.forEach(input => {
         input.style.borderColor = '';
     });
+}
+
+/**
+ * Afficher un message de succès global (sous le formulaire)
+ */
+function showSuccessMessage(message) {
+    const form = document.getElementById('formulaire-contact');
+    // Supprimer d'éventuels messages précédents
+    const oldMessages = form.querySelectorAll('.form-message');
+    oldMessages.forEach(msg => msg.remove());
+
+    const successElement = document.createElement('div');
+    successElement.className = 'form-message success-message';
+    successElement.textContent = message;
+    form.appendChild(successElement);
+
+    // Supprimer le message après 5 secondes
+    setTimeout(() => {
+        successElement.remove();
+    }, 5000);
+}
+
+/**
+ * Afficher un message d'erreur global (sous le formulaire)
+ */
+function showErrorMessage(message) {
+    const form = document.getElementById('formulaire-contact');
+    // Supprimer d'éventuels messages précédents
+    const oldMessages = form.querySelectorAll('.form-message');
+    oldMessages.forEach(msg => msg.remove());
+
+    const errorElement = document.createElement('div');
+    errorElement.className = 'form-message error-message';
+    errorElement.textContent = message;
+    form.appendChild(errorElement);
 }
 
 /**
@@ -175,28 +236,14 @@ function isValidEmail(email) {
 }
 
 /**
- * Fonction utilitaire pour ajouter des classes
+ * Fonctions utilitaires pour les classes
  */
 function addClass(element, className) {
-    if (element) {
-        element.classList.add(className);
-    }
+    if (element) element.classList.add(className);
 }
-
-/**
- * Fonction utilitaire pour retirer des classes
- */
 function removeClass(element, className) {
-    if (element) {
-        element.classList.remove(className);
-    }
+    if (element) element.classList.remove(className);
 }
-
-/**
- * Fonction utilitaire pour basculer des classes
- */
 function toggleClass(element, className) {
-    if (element) {
-        element.classList.toggle(className);
-    }
+    if (element) element.classList.toggle(className);
 }
