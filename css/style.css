@@ -1,0 +1,618 @@
+/* ===== Réinitialisation et variables ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Couleurs principales */
+    --couleur-primaire: #8B4513; /* Marron foncé */
+    --couleur-secondaire: #D2B48C; /* Tan */
+    --couleur-accent: #F5DEB3; /* Beige clair */
+    --couleur-texte: #333333;
+    --couleur-texte-clair: #FFFFFF;
+    --couleur-fond: #FFFFFF;
+    --couleur-fond-secondaire: #F9F9F9;
+    
+    /* Polices */
+    --police-titres: 'Playfair Display', serif;
+    --police-texte: 'Open Sans', sans-serif;
+    
+    /* Espacements */
+    --espace-petit: 10px;
+    --espace-moyen: 20px;
+    --espace-grand: 40px;
+    
+    /* Bordures */
+    --bordure-radius: 8px;
+    --bordure-epaisseur: 1px;
+    --bordure-couleur: #DDDDDD;
+    
+    /* Ombres */
+    --ombre: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --ombre-hover: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Style global ===== */
+body {
+    font-family: var(--police-texte);
+    color: var(--couleur-texte);
+    background-color: var(--couleur-fond);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--espace-moyen);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ===== En-tête ===== */
+header {
+    background-color: var(--couleur-fond);
+    padding: var(--espace-moyen) 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--espace-moyen);
+}
+
+.logo h1 {
+    font-family: var(--police-titres);
+    font-size: 2rem;
+    color: var(--couleur-primaire);
+    margin-bottom: var(--espace-petit);
+}
+
+.logo h1 a {
+    transition: color 0.3s ease;
+}
+
+.logo h1 a:hover {
+    color: var(--couleur-secondaire);
+}
+
+.slogan {
+    font-size: 0.9rem;
+    color: var(--couleur-primaire);
+    font-style: italic;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: var(--espace-grand);
+}
+
+nav ul li a {
+    font-weight: 600;
+    color: var(--couleur-texte);
+    transition: color 0.3s ease;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: var(--couleur-primaire);
+}
+
+nav ul li a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--couleur-primaire);
+}
+
+/* ===== Section héro ===== */
+.hero {
+    background: linear-gradient(rgba(139, 69, 19, 0.8), rgba(139, 69, 19, 0.8)), 
+                url('https://via.placeholder.com/1920x600?text=Fond+Tricot') center/cover no-repeat;
+    color: var(--couleur-texte-clair);
+    text-align: center;
+    padding: 100px 0;
+    margin-bottom: var(--espace-grand);
+}
+
+.hero .container {
+    max-width: 800px;
+}
+
+.hero h2 {
+    font-family: var(--police-titres);
+    font-size: 2.5rem;
+    margin-bottom: var(--espace-moyen);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: var(--espace-grand);
+}
+
+/* ===== Boutons ===== */
+.btn {
+    display: inline-block;
+    background-color: var(--couleur-secondaire);
+    color: var(--couleur-texte-clair);
+    padding: 12px 24px;
+    border-radius: var(--bordure-radius);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--couleur-primaire);
+    transform: translateY(-2px);
+    box-shadow: var(--ombre-hover);
+}
+
+/* ===== Section produits en vedette ===== */
+.produits-vedettes {
+    padding: var(--espace-grand) 0;
+    background-color: var(--couleur-fond-secondaire);
+}
+
+.produits-vedettes h2 {
+    font-family: var(--police-titres);
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: var(--espace-grand);
+    color: var(--couleur-primaire);
+}
+
+.grid-produits {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--espace-grand);
+}
+
+.carte-produit {
+    background-color: var(--couleur-texte-clair);
+    border-radius: var(--bordure-radius);
+    overflow: hidden;
+    box-shadow: var(--ombre);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carte-produit:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--ombre-hover);
+}
+
+.image-produit {
+    height: 250px;
+    overflow: hidden;
+}
+
+.image-produit img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.carte-produit:hover .image-produit img {
+    transform: scale(1.05);
+}
+
+.carte-produit h3 {
+    font-family: var(--police-titres);
+    font-size: 1.3rem;
+    padding: var(--espace-moyen);
+    color: var(--couleur-primaire);
+}
+
+.carte-produit .prix {
+    font-weight: 600;
+    color: var(--couleur-secondaire);
+    font-size: 1.1rem;
+    padding: 0 var(--espace-moyen) var(--espace-petit);
+}
+
+.carte-produit p {
+    padding: 0 var(--espace-moyen) var(--espace-moyen);
+    color: var(--couleur-texte);
+}
+
+.carte-produit .btn {
+    display: block;
+    text-align: center;
+    margin: 0 var(--espace-moyen) var(--espace-moyen);
+    background-color: var(--couleur-primaire);
+}
+
+.carte-produit .btn:hover {
+    background-color: var(--couleur-secondaire);
+    color: var(--couleur-primaire);
+}
+
+/* ===== Section aperçu à propos ===== */
+.apercu-apropos {
+    padding: var(--espace-grand) 0;
+}
+
+.apercu-apropos .container {
+    display: flex;
+    align-items: center;
+    gap: var(--espace-grand);
+    flex-wrap: wrap;
+}
+
+.texte-apropos {
+    flex: 1;
+    min-width: 300px;
+}
+
+.texte-apropos h2 {
+    font-family: var(--police-titres);
+    font-size: 2rem;
+    color: var(--couleur-primaire);
+    margin-bottom: var(--espace-moyen);
+}
+
+.texte-apropos p {
+    margin-bottom: var(--espace-moyen);
+}
+
+.image-apropos {
+    flex: 1;
+    min-width: 300px;
+}
+
+.image-apropos img {
+    width: 100%;
+    border-radius: var(--bordure-radius);
+    box-shadow: var(--ombre);
+}
+
+/* ===== Pied de page ===== */
+footer {
+    background-color: var(--couleur-primaire);
+    color: var(--couleur-texte-clair);
+    padding: var(--espace-grand) 0 var(--espace-moyen);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--espace-grand);
+    margin-bottom: var(--espace-grand);
+}
+
+.footer-section h3 {
+    font-family: var(--police-titres);
+    font-size: 1.3rem;
+    margin-bottom: var(--espace-moyen);
+    color: var(--couleur-secondaire);
+}
+
+.footer-section p,
+.footer-section li {
+    margin-bottom: var(--espace-petit);
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section a {
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: var(--couleur-secondaire);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: var(--espace-moyen);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem;
+}
+
+/* ===== Style pour les pages produits ===== */
+.page-produit .container {
+    max-width: 1000px;
+}
+
+.page-produit .retour {
+    display: inline-block;
+    margin-bottom: var(--espace-grand);
+    color: var(--couleur-primaire);
+    font-weight: 600;
+}
+
+.page-produit .retour:hover {
+    text-decoration: underline;
+}
+
+.page-produit .contenu-produit {
+    display: flex;
+    gap: var(--espace-grand);
+    flex-wrap: wrap;
+    margin-bottom: var(--espace-grand);
+}
+
+.page-produit .image-principale {
+    flex: 1;
+    min-width: 300px;
+}
+
+.page-produit .image-principale img {
+    width: 100%;
+    border-radius: var(--bordure-radius);
+    box-shadow: var(--ombre);
+}
+
+.page-produit .details-produit {
+    flex: 1;
+    min-width: 300px;
+}
+
+.page-produit .details-produit h1 {
+    font-family: var(--police-titres);
+    font-size: 2rem;
+    color: var(--couleur-primaire);
+    margin-bottom: var(--espace-moyen);
+}
+
+.page-produit .details-produit .prix {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--couleur-secondaire);
+    margin-bottom: var(--espace-moyen);
+}
+
+.page-produit .details-produit .description {
+    margin-bottom: var(--espace-moyen);
+}
+
+.page-produit .details-produit .caracteristiques {
+    margin-bottom: var(--espace-moyen);
+}
+
+.page-produit .details-produit .caracteristiques h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--espace-petit);
+}
+
+.page-produit .details-produit .caracteristiques ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.page-produit .details-produit .caracteristiques li {
+    margin-bottom: var(--espace-petit);
+    padding-left: var(--espace-moyen);
+    position: relative;
+}
+
+.page-produit .details-produit .caracteristiques li::before {
+    content: '•';
+    color: var(--couleur-secondaire);
+    position: absolute;
+    left: 0;
+}
+
+.page-produit .actions {
+    display: flex;
+    gap: var(--espace-moyen);
+    flex-wrap: wrap;
+}
+
+.page-produit .actions .btn {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+}
+
+/* ===== Page À propos ===== */
+.page-apropos .container {
+    max-width: 1000px;
+}
+
+.page-apropos h1 {
+    font-family: var(--police-titres);
+    font-size: 2.5rem;
+    color: var(--couleur-primaire);
+    margin-bottom: var(--espace-grand);
+}
+
+.page-apropos .section-apropos {
+    margin-bottom: var(--espace-grand);
+}
+
+.page-apropos .section-apropos h2 {
+    font-family: var(--police-titres);
+    font-size: 1.8rem;
+    color: var(--couleur-primaire);
+    margin-bottom: var(--espace-moyen);
+}
+
+.page-apropos .image-galerie {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--espace-moyen);
+    margin: var(--espace-grand) 0;
+}
+
+.page-apropos .image-galerie img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--bordure-radius);
+    box-shadow: var(--ombre);
+}
+
+/* ===== Page Contact ===== */
+.page-contact .container {
+    max-width: 800px;
+}
+
+.page-contact h1 {
+    font-family: var(--police-titres);
+    font-size: 2.5rem;
+    color: var(--couleur-primaire);
+    margin-bottom: var(--espace-grand);
+}
+
+.page-contact .coordonnées {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--espace-grand);
+    margin-bottom: var(--espace-grand);
+}
+
+.page-contact .coordonnées .carte-coord {
+    background-color: var(--couleur-fond-secondaire);
+    padding: var(--espace-moyen);
+    border-radius: var(--bordure-radius);
+    box-shadow: var(--ombre);
+}
+
+.page-contact .coordonnées .carte-coord h3 {
+    font-family: var(--police-titres);
+    font-size: 1.3rem;
+    color: var(--couleur-primaire);
+    margin-bottom: var(--espace-moyen);
+}
+
+.page-contact .coordonnées .carte-coord p {
+    margin-bottom: var(--espace-petit);
+}
+
+.page-contact .formulaire {
+    background-color: var(--couleur-fond-secondaire);
+    padding: var(--espace-grand);
+    border-radius: var(--bordure-radius);
+    box-shadow: var(--ombre);
+}
+
+.page-contact .formulaire h2 {
+    font-family: var(--police-titres);
+    font-size: 1.5rem;
+    color: var(--couleur-primaire);
+    margin-bottom: var(--espace-moyen);
+}
+
+.page-contact .formulaire .groupe-formulaire {
+    margin-bottom: var(--espace-moyen);
+}
+
+.page-contact .formulaire label {
+    display: block;
+    margin-bottom: var(--espace-petit);
+    font-weight: 600;
+}
+
+.page-contact .formulaire input,
+.page-contact .formulaire textarea {
+    width: 100%;
+    padding: 12px;
+    border: var(--bordure-epaisseur) solid var(--bordure-couleur);
+    border-radius: var(--bordure-radius);
+    font-family: var(--police-texte);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.page-contact .formulaire input:focus,
+.page-contact .formulaire textarea:focus {
+    outline: none;
+    border-color: var(--couleur-primaire);
+}
+
+.page-contact .formulaire textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+.page-contact .formulaire .btn {
+    width: 100%;
+    background-color: var(--couleur-primaire);
+}
+
+.page-contact .formulaire .btn:hover {
+    background-color: var(--couleur-secondaire);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: var(--espace-moyen);
+        margin-top: var(--espace-moyen);
+    }
+    
+    .hero h2 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .apercu-apropos .container {
+        flex-direction: column;
+    }
+    
+    .apercu-apropos .image-apropos {
+        order: -1;
+    }
+    
+    .page-produit .contenu-produit {
+        flex-direction: column;
+    }
+    
+    .page-contact .coordonnées {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-produits {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero {
+        padding: 60px 0;
+    }
+    
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+    
+    .page-produit .details-produit h1 {
+        font-size: 1.5rem;
+    }
+}

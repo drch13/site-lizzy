@@ -1,0 +1,35 @@
+# Ignorer les fichiers générés ou temporaires
+.DS_Store
+Thumbs.db
+
+# Ignorer les fichiers de configuration des éditeurs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Ignorer les fichiers de build ou de distribution
+/dist/
+/build/
+
+# Ignorer les fichiers de dépendances (si on utilise npm plus tard)
+/node_modules/
+package-lock.json
+
+# Ignorer les fichiers de log
+*.log
+
+# Ignorer les fichiers temporaires
+*.tmp
+*.temp
+
+# Ignorer les fichiers de cache
+.cache/
+
+# Ignorer les images optimisées (si générées automatiquement)
+/images/optimized/
+
+# Ignorer les fichiers de configuration locale
+.env
+.env.local
+.env.*.local
