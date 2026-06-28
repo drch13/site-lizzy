@@ -72,16 +72,15 @@
 
             <div class="formulaire">
                 <h2>Envoyez-moi un message</h2>
-                <!-- Formulaire sans attribut action (géré via JavaScript) -->
-                <form id="formulaire-contact" method="POST">
+                <form id="formulaire-contact" action="https://formspree.io/f/mpqgrovr" method="POST">
                     <div class="groupe-formulaire">
                         <label for="nom">Nom *</label>
-                        <input type="text" id="nom" name="nom" required>
+                        <input type="text" id="nom" name="nom">
                     </div>
                     
                     <div class="groupe-formulaire">
                         <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email">
                     </div>
                     
                     <div class="groupe-formulaire">
@@ -91,12 +90,12 @@
                     
                     <div class="groupe-formulaire">
                         <label for="sujet">Sujet *</label>
-                        <input type="text" id="sujet" name="sujet" required>
+                        <input type="text" id="sujet" name="sujet">
                     </div>
                     
                     <div class="groupe-formulaire">
                         <label for="message">Message *</label>
-                        <textarea id="message" name="message" required></textarea>
+                        <textarea id="message" name="message"></textarea>
                     </div>
                     
                     <button type="submit" class="btn">Envoyer le message</button>
