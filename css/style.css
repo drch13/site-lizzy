@@ -80,43 +80,49 @@ header .container {
 /* Style pour le logo */
 .logo {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    text-align: center;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: inherit;
 }
 
 .logo-img {
-    width: 120px; /* Taille ajustable selon vos besoins */
+    width: 60px; /* Taille ajustable selon vos besoins */
     height: auto;
-    margin-bottom: 10px;
-    border-radius: 0%; /* Optionnel : ajustez si vous voulez un logo circulaire */
     object-fit: contain;
 }
 
-.logo a {
-    display: inline-block;
+.logo-text {
+    display: flex;
+    flex-direction: column;
 }
 
-
-.logo h1 {
+.logo-text h1 {
     font-family: var(--police-titres);
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--couleur-primaire);
-    margin-bottom: var(--espace-petit);
+    margin-bottom: 0;
+    line-height: 1.2;
 }
 
-.logo h1 a {
+.logo-text h1 a {
     transition: color 0.3s ease;
 }
 
-.logo h1 a:hover {
+.logo-text h1 a:hover {
     color: var(--couleur-secondaire);
 }
 
-.slogan {
-    font-size: 0.9rem;
+.logo-text .slogan {
+    font-size: 0.85rem;
     color: var(--couleur-primaire);
     font-style: italic;
+    margin: 0;
 }
 
 nav ul {
