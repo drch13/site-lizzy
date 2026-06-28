@@ -75,8 +75,8 @@ header .container {
     text-align: center;
     align-items: center;
     gap: var(--espace-moyen);
+    position: relative;
 }
-
 
 /* Style pour le bouton menu hamburger */
 .menu-toggle {
@@ -145,6 +145,11 @@ header .container {
     color: var(--couleur-primaire);
 }
 
+/* Masquer le menu par défaut sur mobile */
+nav ul {
+    display: none;
+}
+
 /* Style pour le body quand le menu est ouvert */
 body.menu-open {
     overflow: hidden;
@@ -193,41 +198,6 @@ body.menu-open {
     color: var(--couleur-primaire);
     font-style: italic;
     margin: 0;
-}
-
-nav ul {
-    display: none;
-}
-
-#main-nav ul {
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    gap: var(--espace-moyen);
-    margin-top: var(--espace-moyen);
-}
-
-nav ul li a {
-    font-weight: 600;
-    color: var(--couleur-texte);
-    transition: color 0.3s ease;
-    position: relative;
-    padding-bottom: 5px;
-}
-
-nav ul li a:hover,
-nav ul li a.active {
-    color: var(--couleur-primaire);
-}
-
-nav ul li a.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--couleur-primaire);
 }
 
 /* ===== Section héro (Mobile First) ===== */
@@ -700,6 +670,37 @@ footer {
 
 /* ===== Styles pour écrans >= 481px (tablettes petites et mobiles en paysage) ===== */
 @media (min-width: 481px) {
+    /* Masquer le bouton hamburger */
+    .menu-toggle {
+        display: none;
+    }
+    
+    /* Afficher le menu normalement (pas en overlay) */
+    #main-nav {
+        position: static;
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        opacity: 1;
+        visibility: visible;
+        box-shadow: none;
+        display: flex;
+        justify-content: flex-end;
+        padding: 0;
+    }
+    
+    #main-nav ul {
+        display: flex !important;
+        flex-direction: row;
+        gap: var(--espace-grand);
+        margin-top: 0;
+    }
+    
+    #main-nav ul li a {
+        font-size: 1rem;
+        padding: 0;
+    }
+    
     .hero {
         padding: 80px 0;
     }
@@ -731,6 +732,21 @@ footer {
     .page-contact .coordonnées {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
+    
+    /* Afficher le slogan */
+    .brand-title .slogan {
+        display: block;
+    }
+    
+    /* Ajuster le logo */
+    .logo-img {
+        width: 100px;
+    }
+    
+    /* Ajuster le titre */
+    .brand-title h1 {
+        font-size: 1.5rem;
+    }
 }
 
 /* ===== Styles pour écrans >= 769px (ordinateurs et tablettes grandes) ===== */
@@ -756,12 +772,6 @@ footer {
     
     .brand-title .slogan {
         font-size: 0.9rem;
-    }
-    
-    nav ul {
-        flex-direction: row;
-        gap: var(--espace-grand);
-        margin-top: 0;
     }
     
     .hero {
