@@ -77,6 +77,79 @@ header .container {
     gap: var(--espace-moyen);
 }
 
+
+/* Style pour le bouton menu hamburger */
+.menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--couleur-primaire);
+    padding: var(--espace-petit);
+    position: absolute;
+    top: var(--espace-petit);
+    right: var(--espace-moyen);
+    z-index: 101;
+    transition: transform 0.3s ease;
+}
+
+.menu-toggle.active {
+    transform: rotate(90deg);
+}
+
+/* Style pour le menu overlay */
+#main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--couleur-fond);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#main-nav.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+#main-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-grand);
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+#main-nav ul li a {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--couleur-texte);
+    transition: color 0.3s ease;
+    padding: var(--espace-petit) var(--espace-moyen);
+}
+
+#main-nav ul li a:hover,
+#main-nav ul li a.active {
+    color: var(--couleur-primaire);
+}
+
+/* Style pour le body quand le menu est ouvert */
+body.menu-open {
+    overflow: hidden;
+}
+
 /* Style pour le logo et le titre */
 .logo {
     display: flex;
@@ -123,11 +196,15 @@ header .container {
 }
 
 nav ul {
+    display: none;
+}
+
+#main-nav ul {
     display: flex;
     flex-direction: column;
     list-style: none;
-    gap: 8px;
-    margin-top: 5px;
+    gap: var(--espace-moyen);
+    margin-top: var(--espace-moyen);
 }
 
 nav ul li a {

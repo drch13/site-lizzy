@@ -45,16 +45,17 @@ function animateOnScroll() {
 }
 
 /**
- * Configuration du menu mobile
+ * Configuration du menu mobile (hamburger)
  */
 function setupMobileMenu() {
-    // Si on ajoute un bouton menu mobile plus tard
-    const mobileMenuButton = document.querySelector('.mobile-menu-button');
-    const nav = document.querySelector('nav ul');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('#main-nav');
     
-    if (mobileMenuButton && nav) {
-        mobileMenuButton.addEventListener('click', function() {
-            nav.classList.toggle('mobile-menu-open');
+    if (menuToggle && nav) {
+        menuToggle.addEventListener('click', function() {
+            nav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
         });
     }
 }
