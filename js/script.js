@@ -80,14 +80,13 @@ function setupProductCards() {
 }
 
 /**
- * Validation et soumission du formulaire de contact
+ * Validation du formulaire de contact
  */
 function setupFormValidation() {
     const contactForm = document.getElementById('formulaire-contact');
     
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-
             // Récupérer les champs
             const nom = document.getElementById('nom');
             const email = document.getElementById('email');
@@ -158,41 +157,6 @@ function clearErrors() {
     inputs.forEach(input => {
         input.style.borderColor = '';
     });
-}
-
-/**
- * Afficher un message de succès global (sous le formulaire)
- */
-function showSuccessMessage(message) {
-    const form = document.getElementById('formulaire-contact');
-    // Supprimer d'éventuels messages précédents
-    const oldMessages = form.querySelectorAll('.form-message');
-    oldMessages.forEach(msg => msg.remove());
-
-    const successElement = document.createElement('div');
-    successElement.className = 'form-message success-message';
-    successElement.textContent = message;
-    form.appendChild(successElement);
-
-    // Supprimer le message après 5 secondes
-    setTimeout(() => {
-        successElement.remove();
-    }, 5000);
-}
-
-/**
- * Afficher un message d'erreur global (sous le formulaire)
- */
-function showErrorMessage(message) {
-    const form = document.getElementById('formulaire-contact');
-    // Supprimer d'éventuels messages précédents
-    const oldMessages = form.querySelectorAll('.form-message');
-    oldMessages.forEach(msg => msg.remove());
-
-    const errorElement = document.createElement('div');
-    errorElement.className = 'form-message error-message';
-    errorElement.textContent = message;
-    form.appendChild(errorElement);
 }
 
 /**
