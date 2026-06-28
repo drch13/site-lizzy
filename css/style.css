@@ -194,6 +194,16 @@ nav ul li a.active::after {
     box-shadow: var(--ombre-hover);
 }
 
+/* Boutons pour les réseaux sociaux */
+.btn-social {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 30px;
+    min-width: 180px;
+    justify-content: center;
+}
+
 /* ===== Section produits en vedette ===== */
 .produits-vedettes {
     padding: var(--espace-grand) 0;
