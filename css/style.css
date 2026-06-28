@@ -77,49 +77,45 @@ header .container {
     gap: var(--espace-moyen);
 }
 
-/* Style pour le logo */
+/* Style pour le logo et le titre */
 .logo {
     display: flex;
     align-items: center;
 }
 
-.logo-link {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    text-decoration: none;
-    color: inherit;
+.logo a {
+    display: inline-block;
 }
 
 .logo-img {
-    width: 60px; /* Taille ajustable selon vos besoins */
+    width: 120px; /* Taille doublée */
     height: auto;
     object-fit: contain;
 }
 
-.logo-text {
+.brand-title {
     display: flex;
     flex-direction: column;
+    margin-left: 15px;
 }
 
-.logo-text h1 {
+.brand-title h1 {
     font-family: var(--police-titres);
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: var(--couleur-primaire);
-    margin-bottom: 0;
-    line-height: 1.2;
+    margin-bottom: var(--espace-petit);
 }
 
-.logo-text h1 a {
+.brand-title h1 a {
     transition: color 0.3s ease;
 }
 
-.logo-text h1 a:hover {
+.brand-title h1 a:hover {
     color: var(--couleur-secondaire);
 }
 
-.logo-text .slogan {
-    font-size: 0.85rem;
+.brand-title .slogan {
+    font-size: 0.9rem;
     color: var(--couleur-primaire);
     font-style: italic;
     margin: 0;
