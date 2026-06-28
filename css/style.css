@@ -446,7 +446,7 @@ footer {
 }
 
 .page-produit .details-produit .caracteristiques li::before {
-    content: '•';
+    content: '\2022';
     color: var(--couleur-secondaire);
     position: absolute;
     left: 0;
@@ -592,6 +592,27 @@ footer {
 
 .page-contact .formulaire .btn:hover {
     background-color: var(--couleur-secondaire);
+}
+
+/* Messages du formulaire (succès/erreur) */
+.page-contact .form-message {
+    padding: 12px;
+    margin-top: 20px;
+    border-radius: var(--bordure-radius);
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.page-contact .success-message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.page-contact .error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
 }
 
 /* ===== Responsive ===== */
