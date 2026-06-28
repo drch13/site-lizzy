@@ -84,12 +84,9 @@ function setupProductCards() {
  */
 function setupFormValidation() {
     const contactForm = document.getElementById('formulaire-contact');
-    // Remplacez cette URL par votre ID Formspree réel (ex: https://formspree.io/f/mleznjgo)
-    const formspreeUrl = 'https://formspree.io/f/mpqgrovr';
     
     if (contactForm) {
-        contactForm.addEventListener('submit', async function(e) {
-            e.preventDefault(); // Empêcher la soumission classique
+        contactForm.addEventListener('submit', function(e) {
 
             // Récupérer les champs
             const nom = document.getElementById('nom');
@@ -122,39 +119,10 @@ function setupFormValidation() {
                 isValid = false;
             }
 
-            if (!isValid) return; // Arrêter si invalide
-
-            // Désactiver le bouton et afficher un message de chargement
-            const submitButton = contactForm.querySelector('button[type="submit"]');
-            submitButton.textContent = 'Envoi en cours...';
-            submitButton.disabled = true;
-
-            try {
-                // Envoyer les données à Formspree via Fetch API
-                const response = await fetch(formspreeUrl, {
-                    method: 'POST',
-                    body: new FormData(contactForm),
-                    headers: {
-                        'Accept': 'application/json',
-                    },
-                });
-
-                if (response.ok) {
-                    // Succès : afficher un message et réinitialiser le formulaire
-                    showSuccessMessage('Merci pour votre message ! Je vous répondrai dès que possible.');
-                    contactForm.reset();
-                } else {
-                    // Erreur Formspree (ex: limite de soumissions)
-                    throw new Error('Échec de l\'envoi. Veuillez réessayer plus tard.');
-                }
-            } catch (error) {
-                // Afficher un message d'erreur
-                showErrorMessage('Une erreur est survenue : ' + error.message);
-            } finally {
-                // Réactiver le bouton dans tous les cas
-                submitButton.textContent = 'Envoyer le message';
-                submitButton.disabled = false;
+            if (!isValid) {
+                e.preventDefault(); // Bloquer la soumission si invalide
             }
+            // Si valide, laisser Formspree gérer la soumission
         });
     }
 }
