@@ -62,7 +62,7 @@ img {
 /* ===== En-tête (Mobile First) ===== */
 header {
     background-color: var(--couleur-fond);
-    padding: 10px 0;
+    padding: var(--espace-petit) 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
@@ -88,7 +88,7 @@ header .container {
 }
 
 .logo-img {
-    width: 80px;
+    width: 90px;
     height: auto;
     object-fit: contain;
 }
@@ -101,7 +101,7 @@ header .container {
 
 .brand-title h1 {
     font-family: var(--police-titres);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: var(--couleur-primaire);
     margin-bottom: var(--espace-petit);
 }
@@ -115,6 +115,7 @@ header .container {
 }
 
 .brand-title .slogan {
+    display: none;
     font-size: 0.8rem;
     color: var(--couleur-primaire);
     font-style: italic;
