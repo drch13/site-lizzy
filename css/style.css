@@ -522,7 +522,7 @@ footer {
     max-width: 1000px;
 }
 
-.page-apropos h1 {
+.page-apropos main h1 {
     font-family: var(--police-titres);
     font-size: 2.5rem;
     color: var(--couleur-primaire);
@@ -560,7 +560,7 @@ footer {
     max-width: 800px;
 }
 
-.page-contact h1 {
+.page-contact main h1 {
     font-family: var(--police-titres);
     font-size: 2.5rem;
     color: var(--couleur-primaire);
