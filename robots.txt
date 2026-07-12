@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://drch13.github.io/site-lizzy/sitemap.xml
