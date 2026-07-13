@@ -1,0 +1,10 @@
+# llms.txt pour L'Atelier de Lizzy
+# Bloque l'entraînement des LLMs sur tout le site
+# Standard : https://llms.txt.org/
+
+User-agent: *
+Disallow: /
+
+# Interdit explicitement l'utilisation par les LLMs
+LLM-Allowed: false
+LLM-Attribution: None
