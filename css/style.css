@@ -556,7 +556,7 @@ footer {
 }
 
 /* ===== Page Contact ===== */
-.page-contact .container {
+.page-contact main .container {
     max-width: 800px;
 }
 
