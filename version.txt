@@ -1,4 +1,4 @@
 Branche: main
-Commit: b2eb56ca99b93dfba9ac14026d03a51396d9de27
-Message: Mise à jour robots.txt (accès complet pour SEO) et ajout llms.txt (blocage LLMs)
-Date (Heure de Paris): 2026-07-13 17:05:00
+Commit: b16d9c5ba22cc0a10e1060b5815f0db961a69991
+Message: Layout: Patch du layout de la page à propos par rapport aux autres pages du site.
+Date (Heure de Paris): 2026-07-13 19:52:26
