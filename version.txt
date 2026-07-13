@@ -1,4 +1,4 @@
 Branche: main
-Commit: b16d9c5ba22cc0a10e1060b5815f0db961a69991
-Message: Layout: Patch du layout de la page à propos par rapport aux autres pages du site.
-Date (Heure de Paris): 2026-07-13 19:52:26
+Commit: f3a80c567815921894a97ad54f1196eee4bee547
+Message: Layout: Résolution du problème d'affichage de la page à propos par rapport aux autres pages du site
+Date (Heure de Paris): 2026-07-13 20:07:38
