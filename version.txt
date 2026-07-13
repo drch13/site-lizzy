@@ -1,4 +1,4 @@
 Branche: main
-Commit: 00a862a7099a476a9ee67f1f745540b7147f6933
-Message: Add red yarn ball favicon in SVG format
-Date (Heure de Paris): 2026-07-13 14:50:06
+Commit: 10bc1f6fb10b80fd7f1e26e75535912786842add
+Message: changement favicon
+Date (Heure de Paris): 2026-07-13 17:22:00
