@@ -519,7 +519,7 @@ footer {
 
 /* ===== Page À propos ===== */
 .page-apropos .container {
-    max-width: 1000px;
+    max-width: 1200px;
 }
 
 .page-apropos main h1 {
@@ -750,7 +750,7 @@ footer {
 }
 
 /* ===== Styles pour écrans >= 769px (ordinateurs et tablettes grandes) ===== */
-@media (min-width: 769px) and (max-width: 1800px) {
+@media (min-width: 769px) {
     header {
         padding: var(--espace-moyen) 0;
     }
