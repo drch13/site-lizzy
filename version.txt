@@ -1,4 +1,4 @@
 Branche: main
-Commit: 04b7f35ae0a6777181bd817170ffc71cd4c3aa5f
-Message: Rename favicon1.svg to favicon.svg
-Date (Heure de Paris): 2026-07-13 15:27:18
+Commit: b2eb56ca99b93dfba9ac14026d03a51396d9de27
+Message: Mise à jour robots.txt (accès complet pour SEO) et ajout llms.txt (blocage LLMs)
+Date (Heure de Paris): 2026-07-13 17:05:00
