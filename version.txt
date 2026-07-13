@@ -1,4 +1,4 @@
 Branche: main
-Commit: 195d345183f63a9b4ad39340d55ba5a96dc809c0
-Message: Fix workflow permissions for version.txt update
-Date (Heure de Paris): 2026-07-13 14:36:20
+Commit: 00a862a7099a476a9ee67f1f745540b7147f6933
+Message: Add red yarn ball favicon in SVG format
+Date (Heure de Paris): 2026-07-13 14:50:06
