@@ -1,4 +1,0 @@
-Branche: main
-Commit: f3a80c567815921894a97ad54f1196eee4bee547
-Message: Layout: Résolution du problème d'affichage de la page à propos par rapport aux autres pages du site
-Date (Heure de Paris): 2026-07-13 20:07:38
