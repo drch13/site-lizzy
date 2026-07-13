@@ -8,6 +8,8 @@ on:
 jobs:
   update-version:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Donne la permission d'écrire sur le contenu du repo
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -53,5 +55,5 @@ jobs:
             echo "No changes to version.txt"
           else
             git commit -m "Update version.txt for ${{ steps.commit-info.outputs.branch }} [skip ci]"
-            git push
+            git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ steps.commit-info.outputs.branch }}
           fi
