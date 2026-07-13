@@ -422,7 +422,7 @@ footer {
 
 /* ===== Style pour les pages produits (Mobile First) ===== */
 .page-produit .container {
-    max-width: 1000px;
+    max-width: 1200px;
 }
 
 .page-produit .retour {
@@ -750,7 +750,7 @@ footer {
 }
 
 /* ===== Styles pour écrans >= 769px (ordinateurs et tablettes grandes) ===== */
-@media (min-width: 769px) {
+@media (min-width: 769px) and (max-width: 1800px) {
     header {
         padding: var(--espace-moyen) 0;
     }
