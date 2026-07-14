@@ -1,25 +1,31 @@
-# Site Web Lizzy Tricot
+# Site Web L'Atelier de Lizzy
 
-Un site web simple et élégant pour présenter les créations artisanales en tricot de Lizzy.
+Un site web simple et élégant pour présenter les créations artisanales en crochet de Lizzy.
 
 ## Structure du projet
 
 ```
 site-lizzy/
-├── index.html               # Page d'accueil
-├── a-propos.html            # Page "À propos"
-├── contact.html             # Page "Contact"
-├── produits/                # Pages des produits
+├── index.html                     # Page d'accueil
+├── a-propos.html                  # Page "À propos"
+├── contact.html                   # Page "Contact"
+├── produits/                      # Pages des produits
 │   ├── echarpe-merinos.html
 │   ├── bonnet.html
 │   ├── pull-col-roule.html
 │   └── gants.html
 ├── css/
-│   └── style.css            # Feuille de style principale
+│   └── style.css                  # Feuille de style principale
 ├── js/
-│   └── script.js            # Script JavaScript
-├── images/                  # Dossier pour les images
-└── README.md                # Ce fichier
+│   └── script.js                  # Script JavaScript
+├── images/                        # Dossier pour les images
+├── favicon.svg                    # favicon
+├── google52176cc24d75d73d.html    # Fiche propriété collaborateur 1 pour Google Search Console
+├── googlefcee5d01b243cb71.html    # Fiche propriété collaborateur 2 pour Google Search Console
+├── llms.txt                       # pour gérer l'utilisation des données du site par les IA
+├── robots.txt                     # accès crawlers pour SEO
+├── sitemap.xml                    # structure du site pour crawler Google
+└── README.md                      # Ce fichier
 ```
 
 ## Fonctionnalités
@@ -43,15 +49,7 @@ site-lizzy/
 
 ## Comment personnaliser
 
-### 1. Modifier le nom et le slogan
-
-Dans tous les fichiers HTML, cherchez et remplacez :
-```html
-<h1><a href="index.html">Lizzy Tricot</a></h1>
-<p class="slogan">Créations uniques en laine tricotée</p>
-```
-
-### 2. Changer les couleurs
+### 1. Changer les couleurs
 
 Dans `css/style.css`, modifiez les variables CSS au début du fichier :
 ```css
@@ -63,21 +61,21 @@ Dans `css/style.css`, modifiez les variables CSS au début du fichier :
 }
 ```
 
-### 3. Ajouter un nouveau produit
+### 2. Ajouter un nouveau produit
 
 1. Créez un nouveau fichier dans le dossier `produits/` (ex: `nouveau-produit.html`)
 2. Utilisez le modèle des fichiers existants
 3. Ajoutez une carte pour ce produit dans `index.html` (section produits en vedette)
 4. Ajoutez un lien dans la navigation si nécessaire
 
-### 4. Modifier les images
+### 3. Modifier les images
 
 Placez vos images dans le dossier `images/` et mettez à jour les chemins dans les fichiers HTML :
 ```html
 <img src="images/nom-de-votre-image.jpg" alt="Description">
 ```
 
-### 5. Modifier les coordonnées
+### 4. Modifier les coordonnées
 
 Dans `contact.html` et dans le pied de page de chaque page, modifiez :
 ```html
@@ -113,7 +111,7 @@ Pour mettre le site en ligne :
 2. Allez dans les paramètres du dépôt
 3. Activez GitHub Pages
 4. Sélectionnez la branche `main` et le dossier `/ (root)`
-5. Votre site sera disponible à l'URL : `https://votre-utilisateur.github.io/site-lizzy/`
+5. Votre site sera disponible à l'URL : `https://drch13.github.io/site-lizzy/`
 
 ## Technologies utilisées
 
@@ -127,25 +125,6 @@ Pour mettre le site en ligne :
 - Utilisez des images de haute qualité (au moins 800x600px)
 - Optimisez les images pour le web (utilisez des outils comme TinyPNG)
 - Nommez vos fichiers avec des noms descriptifs (ex: `echarpe-beige.jpg`)
-
-## Exemples de produits à ajouter
-
-Voici quelques idées de produits que vous pourriez ajouter :
-
-1. **Chaussettes en laine** - 25 €
-2. **Gilet tricoté** - 75 €
-3. **Écharpe en cachemire** - 65 €
-4. **Bonnet avec pompon** - 40 €
-5. **Moufles tricotées** - 35 €
-6. **Couvre-épaules** - 55 €
-7. **Tapis de sol tricoté** - 120 €
-8. **Coussin tricoté** - 45 €
-9. **Écharpe infinie** - 50 €
-10. **Set bonnet + écharpe** - 70 €
-
-## Support
-
-Si vous avez des questions ou besoin d'aide pour personnaliser le site, n'hésitez pas à me contacter.
 
 ## Licence
 
