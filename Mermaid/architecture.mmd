@@ -1,0 +1,210 @@
+# Architecture du Site - L'Atelier de Lizzy
+
+## Schéma Global de l'Architecture
+
+```mermaid
+flowchart TD
+    subgraph "Frontend (Client)"
+        A[HTML5] --> B[CSS3]
+        A --> C[JavaScript]
+        B --> D[Google Fonts\nPlayfair Display\nOpen Sans]
+        C --> E[Formspree.io\nGestion Formulaires]
+    end
+    
+    subgraph "Structure des Fichiers"
+        F[/] --> G[index.html]
+        F --> H[a-propos.html]
+        F --> I[contact.html]
+        F --> J[css/style.css]
+        F --> K[js/script.js]
+        F --> L[images/]
+        F --> M[produits/]
+        M --> N[10 fichiers HTML\nproduits]
+    end
+    
+    subgraph "Configuration"
+        O[.gitignore]
+        P[robots.txt]
+        Q[sitemap.xml]
+        R[llms.txt]
+        S[favicon.svg]
+    end
+    
+    subgraph "Hébergement"
+        T[GitHub Pages\nhttps://drch13.github.io/site-lizzy/]
+    end
+    
+    style A fill:#e1f5fe
+    style B fill:#e1f5fe
+    style C fill:#e1f5fe
+    style T fill:#c8e6c9
+```
+
+## Structure des Pages
+
+```mermaid
+flowchart TD
+    subgraph "Pages Principales"
+        A[index.html\nAccueil] -->|liens| B[a-propos.html\nÀ Propos]
+        A -->|liens| C[contact.html\nContact]
+        A -->|liens| D[produits/\n10 produits]
+    end
+    
+    subgraph "Pages Produits"
+        D --> E1[echarpe-merinos.html]
+        D --> E2[bonnet.html]
+        D --> E3[gants.html]
+        D --> E4[chaussettes.html]
+        D --> E5[coussin.html]
+        D --> E6[couvre-epaules.html]
+        D --> E7[gilet.html]
+        D --> E8[moufles.html]
+        D --> E9[pull-col-roule.html]
+        D --> E10[tapis-sol.html]
+    end
+    
+    subgraph "Éléments Communs"
+        F[Header\n- Logo\n- Navigation\n- Menu Mobile]
+        G[Footer\n- Coordonnées\n- Liens rapides\n- Copyright]
+    end
+    
+    A --> F
+    B --> F
+    C --> F
+    E1 --> F
+    E2 --> F
+    E3 --> F
+    E4 --> F
+    E5 --> F
+    E6 --> F
+    E7 --> F
+    E8 --> F
+    E9 --> F
+    E10 --> F
+    
+    A --> G
+    B --> G
+    C --> G
+    E1 --> G
+    E2 --> G
+    E3 --> G
+    E4 --> G
+    E5 --> G
+    E6 --> G
+    E7 --> G
+    E8 --> G
+    E9 --> G
+    E10 --> G
+```
+
+## Flux Utilisateur
+
+```mermaid
+journey
+    title Parcours Utilisateur Typique
+    section Accueil
+      Visiter index.html: 5: Visiteur
+      Voir produits en vedette: 4: Visiteur
+      Cliquer sur "Voir plus": 3: Visiteur
+    section Produit
+      Consulter page produit: 3: Visiteur
+      Retour à l'accueil: 2: Visiteur
+    section Contact
+      Remplir formulaire: 2: Visiteur
+      Envoyer message: 1: Visiteur
+    section À Propos
+      Lire histoire: 2: Visiteur
+      Voir galerie: 1: Visiteur
+```
+
+## Composants UI
+
+```mermaid
+classDiagram
+    class Header {
+        +logo-img
+        +brand-title
+        +menu-toggle
+        +main-nav
+        +responsive()
+    }
+    
+    class Footer {
+        +footer-section[]
+        +copyright
+    }
+    
+    class ProductCard {
+        +image-produit
+        +h3 title
+        +prix
+        +description
+        +btn voir-plus
+        +hover-effect()
+    }
+    
+    class HeroSection {
+        +background-image
+        +title
+        +subtitle
+        +cta-button
+    }
+    
+    class ContactForm {
+        +nom
+        +email
+        +telephone
+        +sujet
+        +message
+        +validation()
+        +submit()
+    }
+    
+    class Gallery {
+        +image-galerie[]
+        +responsive-grid()
+    }
+    
+    Header "1" *-- "0..*" ProductCard : contains
+    Footer "1" *-- "0..*" ProductCard : references
+    index.html "1" *-- "1" HeroSection : contains
+    index.html "1" *-- "0..*" ProductCard : displays
+    contact.html "1" *-- "1" ContactForm : contains
+    a-propos.html "1" *-- "1" Gallery : contains
+```
+
+## Responsive Design Breakpoints
+
+```mermaid
+flowchart LR
+    A[Mobile\n< 481px] -->|Breakpoint 1| B[Tablette Petite\n481px - 768px]
+    B -->|Breakpoint 2| C[Desktop\n≥ 769px]
+    
+    subgraph "Comportements"
+        A --> D[Menu Hamburger\nOverlay]
+        A --> E[Grid 1 colonne]
+        B --> F[Menu Horizontal]
+        B --> G[Grid 2-3 colonnes]
+        C --> H[Menu Horizontal]
+        C --> I[Grid 3-4 colonnes]
+    end
+```
+
+## Dépendances Externes
+
+```mermaid
+flowchart TD
+    subgraph "CDN"
+        A[Google Fonts\nfonts.googleapis.com] -->|Playfair Display| B[CSS]
+        A -->|Open Sans| B
+    end
+    
+    subgraph "Services"
+        C[Formspree.io\nformspree.io/f/mpqgrovr] -->|POST| D[Formulaire Contact]
+    end
+    
+    subgraph "Réseaux Sociaux"
+        E[Facebook\nGroup] -->|Lien| F[Page Contact]
+        G[Instagram\n#] -->|Lien| F
+    end
+```

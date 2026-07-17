@@ -1,0 +1,247 @@
+# Structure Détaillée du Projet
+
+## Arbre des Fichiers
+
+```mermaid
+flowchart TD
+    root[/workspace/drch13__site-lizzy/] --> index.html
+    root --> a-propos.html
+    root --> contact.html
+    root --> css
+    root --> js
+    root --> images
+    root --> produits
+    root --> .gitignore
+    root --> robots.txt
+    root --> sitemap.xml
+    root --> llms.txt
+    root --> favicon.svg
+    root --> README.md
+    root --> google52176cc24d75d73d.html
+    root --> googlefcee5d01b243cb71.html
+    
+    css --> style.css
+    js --> script.js
+    images --> lizzy_logo.jpg
+    images --> img-placeholder.png
+    
+    produits --> bonnet.html
+    produits --> chaussettes.html
+    produits --> coussin.html
+    produits --> couvre-epaules.html
+    produits --> echarpe-merinos.html
+    produits --> gants.html
+    produits --> gilet.html
+    produits --> moufles.html
+    produits --> pull-col-roule.html
+    produits --> tapis-sol.html
+```
+
+## Structure HTML Typique
+
+```mermaid
+flowchart TD
+    subgraph "Structure HTML Standard"
+        A[<!DOCTYPE html>] --> B[<html lang="fr">]
+        B --> C[<head>]
+        B --> D[<body>]
+        
+        C --> E[meta charset]
+        C --> F[meta viewport]
+        C --> G[title]
+        C --> H[link rel="icon" favicon.svg]
+        C --> I[link rel="stylesheet" css/style.css]
+        C --> J[Google Fonts links]
+        
+        D --> K[header]
+        D --> L[main content]
+        D --> M[footer]
+        D --> N[script src="js/script.js"]
+        
+        K --> O[menu-toggle button]
+        K --> P[container div]
+        P --> Q[brand-title span]
+        Q --> R[h1 a L'Atelier de Lizzy]
+        Q --> S[p.slogan Articles de crochet]
+        P --> T[logo div]
+        T --> U[a img logo]
+        P --> V[nav#main-nav]
+        V --> W[ul li a links]
+        
+        L --> X[section.hero]
+        L --> Y[section#produits.produits-vedettes]
+        L --> Z[section.apercu-apropos]
+        
+        Y --> AA[h2 Mes créations]
+        Y --> BB[div.grid-produits]
+        BB --> CC[div.carte-produit x10]
+        CC --> DD[div.image-produit img]
+        CC --> EE[h3 title]
+        CC --> FF[p.prix]
+        CC --> GG[p description]
+        CC --> HH[a.btn Voir plus]
+        
+        M --> II[div.container]
+        II --> JJ[div.footer-content]
+        JJ --> KK[div.footer-section x3]
+        II --> LL[div.copyright]
+    end
+```
+
+## Structure CSS
+
+```mermaid
+flowchart TD
+    subgraph "CSS Organization"
+        A[style.css] --> B[Variables CSS :root]
+        A --> C[Reset *]
+        A --> D[Body & Global Styles]
+        A --> E[Container]
+        A --> F[Typography]
+        A --> G[Header Styles]
+        A --> H[Hero Section]
+        A --> I[Buttons]
+        A --> J[Product Cards]
+        A --> K[About Section]
+        A --> L[Footer]
+        A --> M[Product Pages]
+        A --> N[About Page]
+        A --> O[Contact Page]
+        A --> P[Media Queries]
+        
+        P --> Q[@media min-width: 481px]
+        P --> R[@media min-width: 769px]
+    end
+    
+    subgraph "CSS Variables"
+        B --> S[--couleur-primaire #8B4513]
+        B --> T[--couleur-secondaire #D2B48C]
+        B --> U[--couleur-accent #F5DEB3]
+        B --> V[--police-titres Playfair Display]
+        B --> W[--police-texte Open Sans]
+        B --> X[--espace-petit 10px]
+        B --> Y[--espace-moyen 20px]
+        B --> Z[--espace-grand 40px]
+    end
+```
+
+## JavaScript Architecture
+
+```mermaid
+flowchart TD
+    subgraph "script.js"
+        A[DOMContentLoaded] --> B[animateOnScroll()]
+        A --> C[setupMobileMenu()]
+        A --> D[setupProductCards()]
+        A --> E[setupFormValidation()]
+        
+        B --> F[IntersectionObserver]
+        B --> G[Animated Elements\n.carte-produit\n.section-apropos\n.hero]
+        
+        C --> H[menuToggle click handler]
+        C --> I[nav.classList.toggle active]
+        C --> J[body.classList.toggle menu-open]
+        
+        D --> K[mouseenter/mouseleave\non carte-produit]
+        D --> L[transform translateY]
+        D --> M[boxShadow changes]
+        
+        E --> N[formulaire-contact submit]
+        E --> O[Validation Fields]
+        O --> P[nom required]
+        O --> Q[email required + format]
+        O --> R[sujet required]
+        O --> S[message required]
+        E --> T[showError()]
+        E --> U[clearErrors()]
+        E --> V[isValidEmail() regex]
+        
+        E --> W[Formspree.io POST]
+    end
+    
+    subgraph "Utility Functions"
+        X[addClass()]
+        Y[removeClass()]
+        Z[toggleClass()]
+    end
+```
+
+## SEO & Metadata Structure
+
+```mermaid
+flowchart TD
+    subgraph "SEO Elements"
+        A[sitemap.xml] --> B[URL entries x11]
+        B --> C[index.html priority 1.0]
+        B --> D[a-propos.html priority 0.8]
+        B --> E[contact.html priority 0.8]
+        B --> F[produits/*.html priority 0.6]
+        
+        G[robots.txt] --> H[User-agent: *]
+        G --> I[Allow: /]
+        G --> J[Sitemap reference]
+        
+        K[llms.txt] --> L[User-agent: *]
+        K --> M[Disallow: /]
+        K --> N[LLM-Allowed: false]
+        
+        O[Meta Tags] --> P[charset UTF-8]
+        O --> Q[viewport responsive]
+        O --> R[title unique per page]
+    end
+    
+    subgraph "Social & Analytics"
+        S[Google Search Console\n2 verification files]
+        T[Facebook Group Link]
+        U[Instagram Link placeholder]
+    end
+```
+
+## Image Assets
+
+```mermaid
+flowchart TD
+    subgraph "Images Directory"
+        A[images/] --> B[lizzy_logo.jpg 68KB]
+        A --> C[img-placeholder.png 219KB]
+    end
+    
+    subgraph "Referenced Images in HTML"
+        D[index.html] --> E[images/echarpe-laine.jpg]
+        D --> F[images/bonnet-tricote.jpg]
+        D --> G[images/pull-col-rolle.jpg]
+        D --> H[images/gants-tricotes.jpg]
+        D --> I[images/chaussettes-laine.jpg]
+        D --> J[images/gilet-tricote.jpg]
+        D --> K[images/couvre-epaules.jpg]
+        D --> L[images/moufles.jpg]
+        D --> M[images/tapis-sol.jpg]
+        D --> N[images/coussin-tricote.jpg]
+        D --> O[images/artisan-tricot.jpg]
+        
+        P[a-propos.html] --> Q[images/atelier1.jpg]
+        P --> R[images/atelier2.jpg]
+        P --> S[images/atelier3.jpg]
+        P --> T[images/atelier4.jpg]
+    end
+    
+    subgraph "Fallback Mechanism"
+        U[onerror handler] --> V[img-placeholder.png]
+    end
+    
+    style E fill:#ffcccc
+    style F fill:#ffcccc
+    style G fill:#ffcccc
+    style H fill:#ffcccc
+    style I fill:#ffcccc
+    style J fill:#ffcccc
+    style K fill:#ffcccc
+    style L fill:#ffcccc
+    style M fill:#ffcccc
+    style N fill:#ffcccc
+    style O fill:#ffcccc
+    style Q fill:#ffcccc
+    style R fill:#ffcccc
+    style S fill:#ffcccc
+    style T fill:#ffcccc
+```
